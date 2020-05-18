@@ -41,4 +41,5 @@ class HORROR_TEST_API AMainCharacter : public ACharacter {
 	UFUNCTION( ) void MoveRight(float Value);
 
 	void ChangeStateFlashLight( );
+	void RestoreChargeFlashLight( );
 };

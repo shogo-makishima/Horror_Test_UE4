@@ -23,18 +23,6 @@ void AMainCharacter::Tick(float DeltaTime) {
 	Super::Tick(DeltaTime);
 }
 
-
-void AMainCharacter::ChangeStateFlashLight( ) {
-	if (m_flashlight != NULL) m_flashlight->ChangeStateFlashLight( );
-	else Debug::Error(FString("m_flashlight not found!"));
-
-	/*b_state = !b_state;
-
-	if (m_SpotLight != NULL) m_SpotLight->ToggleVisibility(b_state);
-	else Debug::Error(FString("m_SpotLight not found!"));*/
-}
-
-
 // Called to bind functionality to input
 void AMainCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
@@ -48,7 +36,19 @@ void AMainCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 	// Set up "action" bindings.
 	PlayerInputComponent->BindAction("ChageStateFlashlight", IE_Pressed, this, &AMainCharacter::ChangeStateFlashLight);
+	PlayerInputComponent->BindAction("RestoreFlashlight", IE_Pressed, this, &AMainCharacter::RestoreChargeFlashLight);
 	// PlayerInputComponent->BindAction("ChageStateFlashlight", IE_Pressed, this, &AFlashlight::ChangeStateFlashLight);
+}
+
+
+void AMainCharacter::ChangeStateFlashLight( ) {
+	if (m_flashlight != NULL) m_flashlight->OnOffFlashLight( );
+	else Debug::Error(FString("m_flashlight not found!"));
+}
+
+void AMainCharacter::RestoreChargeFlashLight( ) {
+	if (m_flashlight != NULL) m_flashlight->RestoreCharge(NULL);
+	else Debug::Error(FString("m_flashlight not found!"));
 }
 
 

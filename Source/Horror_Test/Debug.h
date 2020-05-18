@@ -11,4 +11,9 @@ class HORROR_TEST_API Debug {
 	UFUNCTION(BlueprintCallable) static void Error(int);
 	UFUNCTION(BlueprintCallable) static void Error(float);
 	UFUNCTION(BlueprintCallable) static void Error(bool);
+
+	UFUNCTION(BlueprintCallable) static void Warning(FString);
+	UFUNCTION(BlueprintCallable) static void Warning(int);
+	UFUNCTION(BlueprintCallable) static void Warning(float);
+	UFUNCTION(BlueprintCallable) static void Warning(bool);
 };
