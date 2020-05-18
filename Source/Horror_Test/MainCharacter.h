@@ -2,7 +2,7 @@
 
 #include "Components/SpotLightComponent.h"
 #include "Components/InputComponent.h"
-#include "Horror_Test/Debug.h"
+#include "Horror_Test/Flashlight.h"
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
@@ -15,8 +15,10 @@ class HORROR_TEST_API AMainCharacter : public ACharacter {
 	public:
 	// Sets default values for this character's properties
 	AMainCharacter( );
+
 	UPROPERTY(BlueprintReadWrite, Category = "Info") USpotLightComponent* m_SpotLight;
-	UPROPERTY(EditAnywhere, Category = "Info") bool b_state;
+	UPROPERTY(BlueprintReadWrite, Category = "Info") AFlashlight* m_flashlight;
+	UPROPERTY(BlueprintReadWrite, Category = "Info") bool b_state;
 
 	private:
 	float f_maxIntenisty;

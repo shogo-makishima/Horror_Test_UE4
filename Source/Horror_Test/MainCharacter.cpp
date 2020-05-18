@@ -2,6 +2,7 @@
 
 
 #include "MainCharacter.h"
+#include "Horror_Test/Debug.h"
 
 
 // Sets default values
@@ -24,10 +25,13 @@ void AMainCharacter::Tick(float DeltaTime) {
 
 
 void AMainCharacter::ChangeStateFlashLight( ) {
-	b_state = !b_state;
-	
+	if (m_flashlight != NULL) m_flashlight->ChangeStateFlashLight( );
+	else Debug::Error(FString("m_flashlight not found!"));
+
+	/*b_state = !b_state;
+
 	if (m_SpotLight != NULL) m_SpotLight->ToggleVisibility(b_state);
-	else Debug::Error(FString("m_SpotLight not found!"));
+	else Debug::Error(FString("m_SpotLight not found!"));*/
 }
 
 
@@ -44,6 +48,7 @@ void AMainCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompo
 
 	// Set up "action" bindings.
 	PlayerInputComponent->BindAction("ChageStateFlashlight", IE_Pressed, this, &AMainCharacter::ChangeStateFlashLight);
+	// PlayerInputComponent->BindAction("ChageStateFlashlight", IE_Pressed, this, &AFlashlight::ChangeStateFlashLight);
 }
 
 
